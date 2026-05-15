@@ -562,6 +562,7 @@ export function CanvasEditor({
     >
       <div className="h-full w-full relative">
         <Excalidraw
+          langCode="en"
           theme={resolvedTheme === "dark" ? "dark" : "light"}
           initialData={{
             elements: initialContent.elements as any,
