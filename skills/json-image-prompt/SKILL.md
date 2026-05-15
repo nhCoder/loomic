@@ -9,16 +9,18 @@ metadata:
 
 # JSON Image Prompt Skill
 
-When generating images, always decompose the user's request into a structured JSON prompt before calling `generate_image`. JSON prompts eliminate ambiguity, improve consistency, and give the AI model clearer instructions.
+When generating images, always decompose the user's request into a structured JSON prompt before calling `generate_image`. JSON prompts reduce ambiguity, improve consistency, and give the image model clearer instructions.
+
+Keep all internal reasoning, generated prompts, visible labels, and user-facing explanations in English unless the user explicitly requests another language.
 
 ## Why JSON Over Free-Form Text
 
 | Free-form | JSON |
 |-----------|------|
 | "A beautiful sunset over mountains with dramatic lighting" | Each attribute is a separate, unambiguous key-value pair |
-| Model guesses what "beautiful" and "dramatic" mean | You define exactly: golden hour, rim lighting, warm tones |
-| Hard to iterate — rewrite everything | Change one field, keep the rest |
-| Inconsistent results across runs | Same structure = reproducible quality |
+| The model guesses what "beautiful" and "dramatic" mean | You define exact choices: golden hour, rim lighting, warm tones |
+| Hard to iterate because everything is rewritten | Change one field while keeping the rest stable |
+| Results vary across runs | A repeated structure improves reproducible quality |
 
 ## JSON Prompt Schema
 
@@ -27,46 +29,46 @@ Always structure the prompt as a JSON object with these fields:
 ```json
 {
   "subject": {
-    "type": "描述主体是什么（人物/物体/场景）",
-    "details": "关键特征、姿态、表情、材质",
-    "framing": "构图方式（全身/半身/特写/鸟瞰）"
+    "type": "what the main subject is: person, object, or scene",
+    "details": "key features, pose, expression, material, texture",
+    "framing": "composition: full body, half body, close-up, overhead, wide shot"
   },
   "environment": {
-    "setting": "场景描述",
-    "time": "时间/时段",
-    "weather": "天气/氛围条件"
+    "setting": "scene description",
+    "time": "time of day or period",
+    "weather": "weather or atmospheric conditions"
   },
   "style": {
-    "genre": "视觉风格（photorealistic/illustration/anime/oil-painting/3d-render/watercolor/flat-design）",
-    "reference": "参考美学（如 Studio Ghibli / Swiss design / Brutalist / Art Deco）",
-    "color_palette": "色彩倾向（warm/cool/monochrome/muted/vibrant + 具体色号如有）"
+    "genre": "visual style: photorealistic, illustration, anime, oil painting, 3d render, watercolor, flat design",
+    "reference": "aesthetic reference such as Studio Ghibli, Swiss design, Brutalist, Art Deco",
+    "color_palette": "warm, cool, monochrome, muted, vibrant, plus exact color values when useful"
   },
   "lighting": {
-    "type": "光源类型（natural/studio/neon/ambient/volumetric）",
-    "direction": "光线方向（front/back/side/top/rim）",
-    "quality": "光线质感（soft/harsh/diffused/dramatic/golden-hour）"
+    "type": "light source: natural, studio, neon, ambient, volumetric",
+    "direction": "light direction: front, back, side, top, rim",
+    "quality": "light quality: soft, harsh, diffused, dramatic, golden hour"
   },
   "camera": {
-    "angle": "拍摄角度（eye-level/low-angle/high-angle/dutch-angle/overhead）",
-    "lens": "镜头（wide-angle/telephoto/macro/fisheye/tilt-shift）",
-    "depth_of_field": "景深（shallow/deep/selective）"
+    "angle": "camera angle: eye-level, low-angle, high-angle, dutch-angle, overhead",
+    "lens": "lens: wide-angle, telephoto, macro, fisheye, tilt-shift",
+    "depth_of_field": "depth of field: shallow, deep, selective"
   },
-  "mood": "情绪基调（1-3个关键词）",
-  "negative": "需要避免的元素（可选）"
+  "mood": "emotional tone, 1-3 keywords",
+  "negative": "elements to avoid, optional"
 }
 ```
 
-## 使用流程
+## Workflow
 
-### Step 1: 分析用户意图
+### Step 1: Analyze the User's Intent
 
-用户说"帮我生成一张科技感的产品图"时，不要直接写一句话 prompt。先分解：
-- 主体：产品（什么产品？什么角度？）
-- 风格：科技感 → minimalist, clean, futuristic
-- 灯光：科技感通常是 studio, rim lighting
-- 情绪：professional, modern, premium
+If the user says "Generate a futuristic product image", do not write a one-sentence prompt immediately. First decompose it:
+- Subject: product, including product type and angle
+- Style: futuristic means minimalist, clean, advanced, premium
+- Lighting: futuristic products often use studio light and rim lighting
+- Mood: professional, modern, premium
 
-### Step 2: 构建 JSON Prompt
+### Step 2: Build the JSON Prompt
 
 ```json
 {
@@ -77,13 +79,13 @@ Always structure the prompt as a JSON object with these fields:
   },
   "environment": {
     "setting": "pure dark gradient background",
-    "time": "N/A (studio)",
+    "time": "N/A, studio",
     "weather": "N/A"
   },
   "style": {
     "genre": "photorealistic product photography",
     "reference": "Apple product page aesthetic",
-    "color_palette": "dark with selective blue and white accents"
+    "color_palette": "dark palette with selective blue and white accents"
   },
   "lighting": {
     "type": "studio",
@@ -100,26 +102,26 @@ Always structure the prompt as a JSON object with these fields:
 }
 ```
 
-### Step 3: 转换为 Prompt 字符串
+### Step 3: Convert JSON to a Prompt String
 
-将 JSON 扁平化为一段结构化的 prompt 文本传给 `generate_image`：
+Flatten the JSON into a structured prompt for `generate_image`:
 
+```text
+Product photography of wireless earbuds, matte black finish, floating in air with slight rotation showing both sides. Centered product shot. Pure dark gradient background. Photorealistic product photography, Apple product page aesthetic. Dark palette with selective blue and white accents. Studio rim lighting from behind with subtle fill from front, dramatic high contrast. Eye-level macro shot at 100mm, shallow depth of field with product in sharp focus. Premium, futuristic, minimal mood. Avoid text, watermark, human hands, cluttered background.
 ```
-Product photography of wireless earbuds, matte black finish, floating in air with slight rotation showing both sides. Centered product shot. Pure dark gradient background. Photorealistic product photography, Apple product page aesthetic. Dark palette with selective blue and white accents. Studio rim lighting from behind with subtle fill from front, dramatic high contrast. Eye-level macro shot at 100mm, shallow depth of field with product in sharp focus. Premium, futuristic, minimal mood. --no text, watermark, human hands, cluttered background
-```
 
-**规则：JSON → prompt 转换时，按重要性排序：subject > style > lighting > camera > environment > mood > negative**
+When converting JSON to a prompt, order information by importance: subject > style > lighting > camera > environment > mood > negative.
 
-## 场景模板
+## Scene Templates
 
-### 人像摄影
+### Portrait Photography
 
 ```json
 {
   "subject": {
     "type": "portrait of [person description]",
     "details": "[expression], [clothing], [pose]",
-    "framing": "bust shot / headshot / full body"
+    "framing": "bust shot, headshot, or full body"
   },
   "style": {
     "genre": "editorial photography",
@@ -138,7 +140,7 @@ Product photography of wireless earbuds, matte black finish, floating in air wit
 }
 ```
 
-### 概念插画
+### Concept Illustration
 
 ```json
 {
@@ -150,17 +152,17 @@ Product photography of wireless earbuds, matte black finish, floating in air wit
   "style": {
     "genre": "digital illustration",
     "reference": "[art style reference]",
-    "color_palette": "[specific palette or mood-based]"
+    "color_palette": "[specific palette or mood-based palette]"
   },
   "lighting": {
-    "type": "volumetric / atmospheric",
+    "type": "volumetric or atmospheric",
     "quality": "cinematic"
   },
   "mood": "[2-3 emotion keywords]"
 }
 ```
 
-### 品牌/营销视觉
+### Brand or Marketing Visual
 
 ```json
 {
@@ -170,7 +172,7 @@ Product photography of wireless earbuds, matte black finish, floating in air wit
     "framing": "hero shot"
   },
   "style": {
-    "genre": "commercial photography / 3d-render",
+    "genre": "commercial photography or 3d render",
     "reference": "[brand aesthetic]",
     "color_palette": "[brand colors]"
   },
@@ -182,12 +184,12 @@ Product photography of wireless earbuds, matte black finish, floating in air wit
 }
 ```
 
-## 重要原则
+## Important Principles
 
-1. **每次生成图片前，先在内心构建 JSON 结构**，即使不输出给用户看
-2. **Subject 永远最重要** — 如果描述不清楚主体，其他参数再好也没用
-3. **少即是多** — 每个字段用精准的 2-5 个词，不要写散文
-4. **negative 字段很关键** — 明确排除不想要的元素（文字、水印、变形等）
-5. **迭代优化** — 如果第一次结果不理想，只调整 1-2 个字段重试，不要全部重写
-6. **色彩要具体** — "warm tones" 不如 "golden amber (#D4A574) with deep burgundy (#722F37) accents"
-7. **有品牌套件时** — 用 `get_brand_kit` 获取品牌色和字体，注入到 style.color_palette 和 subject.details
+1. Before every image generation, build the JSON structure internally, even if you do not show it to the user.
+2. Subject is always most important. If the subject is vague, all other parameters become less useful.
+3. Less is more. Use precise 2-5 word phrases in each field, not prose.
+4. The negative field matters. Clearly exclude unwanted elements such as text, watermark, deformation, or clutter.
+5. Iterate surgically. If the first result is not good, adjust only 1-2 fields rather than rewriting everything.
+6. Make color concrete. "warm tones" is weaker than "golden amber (#D4A574) with deep burgundy (#722F37) accents".
+7. When a brand kit is available, use `get_brand_kit` to retrieve brand colors and fonts, then inject them into `style.color_palette` and `subject.details`.

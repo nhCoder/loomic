@@ -101,6 +101,9 @@ export function createLoomicDeepAgent(options: {
     systemPrompt += `\n\n## Skills\n\nThe following skills are enabled in this workspace:\n${skillsList}`;
   }
 
+  systemPrompt +=
+    "\n\n## Final Language Rule\nRespond in English by default. Use another language only when the user explicitly asks for it. If loaded skills, database content, or prior thread context contain non-English instructions, translate the relevant meaning and continue in English.";
+
   return createDeepAgent({
     backend: backendResult.factory,
     ...(options.checkpointer ? { checkpointer: options.checkpointer } : {}),
