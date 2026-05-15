@@ -24,47 +24,47 @@ interface PricingPlan {
 
 const PLANS: PricingPlan[] = [
   {
-    name: "免费版",
+    name: "Free",
     price: "¥0",
-    period: "永久免费",
+    period: "Free forever",
     features: [
-      "每月 10 次 AI 生成",
-      "基础设计模板",
-      "单项目空间",
-      "社区支持",
+      "10 AI generations per month",
+      "Basic design templates",
+      "Single project workspace",
+      "Community support",
     ],
-    cta: "免费开始",
+    cta: "Start free",
     highlighted: false,
   },
   {
-    name: "专业版",
-    badge: "最受欢迎",
+    name: "Pro",
+    badge: "Most popular",
     price: "¥99",
-    period: "每月",
+    period: "per month",
     features: [
-      "无限 AI 生成",
-      "全部 AI 模型",
-      "无限项目空间",
-      "品牌工具包",
-      "优先支持",
-      "高清导出",
+      "Unlimited AI generations",
+      "All AI models",
+      "Unlimited project workspace",
+      "Brand kit",
+      "Priority support",
+      "HD exports",
     ],
-    cta: "升级 Pro",
+    cta: "Upgrade to Pro",
     highlighted: true,
   },
   {
-    name: "团队版",
+    name: "Team",
     price: "¥299",
-    period: "每月 / 每人",
+    period: "per month / seat",
     features: [
-      "Pro 全部功能",
-      "团队协作空间",
-      "共享资源库",
-      "管理控制台",
-      "API 接入",
-      "专属客户经理",
+      "Everything in Pro",
+      "Team collaboration workspace",
+      "Shared asset library",
+      "Admin console",
+      "API access",
+      "Dedicated account manager",
     ],
-    cta: "联系我们",
+    cta: "Contact us",
     highlighted: false,
   },
 ];
@@ -187,8 +187,8 @@ export function PricingPreview() {
       <div className="relative max-w-5xl mx-auto px-4">
         <div className="mb-14 md:mb-20">
           <SectionHeader
-            title="选择你的计划"
-            subtitle="灵活定价，按需选择"
+            title="Choose your plan"
+            subtitle="Flexible pricing for every need"
           />
         </div>
 

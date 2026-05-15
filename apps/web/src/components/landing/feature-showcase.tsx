@@ -135,9 +135,9 @@ interface Feature {
 const FEATURES: Feature[] = [
   {
     icon: Layout,
-    title: "AI Canvas -- 画布级创作",
+    title: "AI Canvas -- Canvas-native creation",
     description:
-      "在无限画布上与 AI 协作。从一个简单的想法开始，AI 帮你构建完整的设计系统——布局、配色、排版，一切所见即所得。",
+      "Collaborate with AI on an infinite canvas. Start with a simple idea and AI helps build a complete design system: layout, color, typography, and everything you see.",
     visual: <CanvasVisual />,
     reversed: false,
     textVariants: slideInLeft,
@@ -145,9 +145,9 @@ const FEATURES: Feature[] = [
   },
   {
     icon: MessageSquare,
-    title: "智能对话 -- 理解创意意图",
+    title: "Smart chat -- Understands creative intent",
     description:
-      "不是冰冷的指令执行。Loomic 理解你的设计需求，主动提出建议，在对话中迭代出最佳方案。",
+      "Not cold command execution. Loomic understands your design needs, suggests directions, and iterates toward the best result through conversation.",
     visual: <ChatVisual />,
     reversed: true,
     textVariants: slideInRight,
@@ -155,9 +155,9 @@ const FEATURES: Feature[] = [
   },
   {
     icon: Palette,
-    title: "风格一致 -- 品牌设计系统",
+    title: "Consistent style -- Brand design system",
     description:
-      "上传你的品牌素材，AI 自动理解品牌调性。无论生成多少作品，始终保持风格统一。",
+      "Upload brand assets and AI learns the brand tone. No matter how much you generate, the style stays consistent.",
     visual: <BrandVisual />,
     reversed: false,
     textVariants: slideInLeft,
@@ -165,9 +165,9 @@ const FEATURES: Feature[] = [
   },
   {
     icon: MousePointer,
-    title: "精准编辑 -- 像素级控制",
+    title: "Precise editing -- Pixel-level control",
     description:
-      "AI 生成只是起点。在画布上直接修改每一个元素，精确调整到你满意为止。",
+      "AI generation is only the start. Edit every element directly on the canvas until it is exactly right.",
     visual: <EditVisual />,
     reversed: true,
     textVariants: slideInRight,
@@ -262,8 +262,8 @@ export function FeatureShowcase() {
         {/* Section header */}
         <div className="mb-20 md:mb-28">
           <SectionHeader
-            title="设计，超越生成"
-            subtitle="Loomic 不只是生成工具，更是你的智能设计伙伴"
+            title="Design beyond generation"
+            subtitle="Loomic is more than a generator. It is your intelligent design partner."
             className="[&_h2]:tracking-tighter"
           />
         </div>

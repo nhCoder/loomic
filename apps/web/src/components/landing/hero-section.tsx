@@ -182,7 +182,7 @@ function AnimatedSubtitle({ show }: { show: boolean }) {
 
 export function HeroSection() {
   const { isComplete } = useTypewriter({
-    text: "让创意，自由生长",
+    text: "Let creativity grow freely",
     speed: 60,
     delay: 200,
   });
@@ -254,7 +254,7 @@ export function HeroSection() {
           transition={{ delay: 0.1 }}
           className="mt-6 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent"
         >
-          <TypewriterText text="让创意，自由生长" speed={60} delay={200} />
+          <TypewriterText text="Let creativity grow freely" speed={60} delay={200} />
         </motion.h1>
 
         {/* English subtitle -- editorial style */}
@@ -268,7 +268,7 @@ export function HeroSection() {
           transition={{ delay: descDelay }}
           className="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
         >
-          从灵感到作品，Loomic 是你的 AI 设计伙伴。智能理解你的创意意图，生成专业级设计，让每一个想法都能成为现实。
+          From inspiration to finished work, Loomic is your AI design partner. It understands your creative intent, generates professional designs, and helps every idea become real.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -292,7 +292,7 @@ export function HeroSection() {
                 "linear-gradient(135deg, oklch(0.90 0.17 115) 0%, oklch(0.82 0.17 115) 100%)",
             }}
           >
-            开始创作
+            Start creating
           </Link>
           <a
             href="#showcase"
@@ -304,7 +304,7 @@ export function HeroSection() {
             }}
             className="group inline-flex items-center gap-2 px-8 py-3 rounded-full text-base font-medium border border-border text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-200"
           >
-            查看案例
+            View examples
             <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
           </a>
         </motion.div>

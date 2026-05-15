@@ -17,10 +17,10 @@ interface StatItem {
 }
 
 const STATS: StatItem[] = [
-  { target: 10000, suffix: "+", label: "创作者" },
-  { target: 100000, suffix: "+", label: "设计作品" },
-  { target: 50, suffix: "+", label: "AI 模型" },
-  { target: 99.9, suffix: "%", label: "服务可用性", decimals: true },
+  { target: 10000, suffix: "+", label: "Creators" },
+  { target: 100000, suffix: "+", label: "Designs created" },
+  { target: 50, suffix: "+", label: "AI models" },
+  { target: 99.9, suffix: "%", label: "Service uptime", decimals: true },
 ];
 
 // ---------------------------------------------------------------------------

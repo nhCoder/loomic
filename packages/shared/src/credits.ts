@@ -143,6 +143,7 @@ export const MODEL_MIN_TIER: Record<string, SubscriptionPlan> = {
   "google/nano-banana-2": "starter",
   "google/imagen-4": "starter",
   "openai/gpt-image-1.5": "starter",
+  "openai/gpt-image-2": "starter",
   "black-forest-labs/flux-kontext-pro": "starter",
   "bytedance/seedream-5-lite": "starter",
   "bytedance/seedream-4.5": "starter",

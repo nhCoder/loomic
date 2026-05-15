@@ -25,7 +25,7 @@ export function PricingFAQ() {
       {/* Header */}
       <div className="mx-auto mb-12 max-w-3xl text-center">
         <h2 className="text-foreground text-2xl font-bold md:text-3xl">
-          常见问题
+          FAQ
         </h2>
       </div>
 

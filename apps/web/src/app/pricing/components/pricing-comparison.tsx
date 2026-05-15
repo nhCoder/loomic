@@ -46,10 +46,10 @@ export function PricingComparison() {
       {/* Header */}
       <div className="mx-auto mb-12 max-w-6xl text-center">
         <h2 className="text-2xl font-bold text-foreground md:text-3xl">
-          功能对比
+          Feature comparison
         </h2>
         <p className="mt-3 text-base text-muted-foreground">
-          查看所有套餐的详细功能差异
+          Compare every plan in detail
         </p>
       </div>
 
@@ -93,7 +93,7 @@ export function PricingComparison() {
             className="cursor-pointer"
             onClick={() => setExpanded((prev) => !prev)}
           >
-            {expanded ? "收起 ↑" : "展开全部功能 ↓"}
+            {expanded ? "Collapse ↑" : "Expand all features ↓"}
           </Button>
         </div>
       )}

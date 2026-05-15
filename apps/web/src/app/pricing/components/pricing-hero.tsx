@@ -13,7 +13,7 @@ export function PricingHero() {
         custom={0}
         className="mb-4 inline-block rounded-full bg-accent/15 px-3.5 py-1 text-sm font-medium text-accent-foreground"
       >
-        定价方案
+        Pricing
       </motion.span>
 
       <motion.h1
@@ -23,7 +23,7 @@ export function PricingHero() {
         custom={1}
         className="max-w-2xl text-center text-4xl font-bold tracking-tight md:text-5xl"
       >
-        为每一位创作者而定价
+        Pricing for every creator
       </motion.h1>
 
       <motion.p
@@ -33,7 +33,7 @@ export function PricingHero() {
         custom={2}
         className="mt-4 max-w-lg text-center text-lg text-muted-foreground"
       >
-        选择适合你的方案，从想法到作品只需几分钟
+        Choose the right plan and go from idea to finished work in minutes
       </motion.p>
     </section>
   );

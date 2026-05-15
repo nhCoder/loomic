@@ -74,7 +74,7 @@ export function createLoomicDeepAgent(options: {
 
   let systemPrompt = options.brandKitId
     ? LOOMIC_SYSTEM_PROMPT +
-      "\n\n当前项目已绑定品牌套件。在进行设计相关工作时，请先使用 get_brand_kit 工具查询品牌信息，确保设计符合品牌规范。"
+      "\n\nThe current project has a linked brand kit. For design-related work, first use the get_brand_kit tool to query brand information and ensure the design follows the brand guidelines."
     : LOOMIC_SYSTEM_PROMPT;
 
   // Inject enabled skills (both system and user-created) into the system prompt.

@@ -104,7 +104,7 @@ export function CreditHeaderButton() {
             className="flex h-8 items-center gap-1.5 rounded-lg bg-primary px-3 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             <Zap className="h-3 w-3 text-muted-foreground" />
-            <span>升级</span>
+            <span>Upgrade</span>
           </Link>
         )}
 

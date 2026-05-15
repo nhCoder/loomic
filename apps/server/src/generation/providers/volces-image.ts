@@ -5,7 +5,7 @@ const DEFAULT_BASE_URL = "https://ark.cn-beijing.volces.com/api/v3";
 
 export class VolcesImageProvider implements ImageProvider {
   readonly name = "volces";
-  // TODO: 补充 models 列表后前端 image-models API 才会展示 Volces 模型供用户选择
+  // TODO: Add the models list so the frontend image-models API can expose Volces models.
   readonly models = [] as const;
   private apiKey: string;
   private baseURL: string;

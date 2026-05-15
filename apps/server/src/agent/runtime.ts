@@ -23,8 +23,8 @@ import type { JobService } from "../features/jobs/job-service.js";
 import type { ViewerService } from "../features/bootstrap/ensure-user-foundation.js";
 import type { AuthenticatedUser, UserSupabaseClient } from "../supabase/user.js";
 import type { ConnectionManager } from "../ws/connection-manager.js";
-// execute 工具由 deepagents 内置提供（LocalShellBackend 作为 sandbox backend）
-// 不需要自定义代码执行工具
+// The execute tool is provided by deepagents through LocalShellBackend as the
+// sandbox backend. No custom code-execution tool is needed.
 import type { SubmitImageJobFn } from "./tools/image-generate.js";
 import type { SubmitVideoJobFn } from "./tools/video-generate.js";
 import type { CreditService } from "../features/credits/credit-service.js";
@@ -993,7 +993,7 @@ export function createAgentRunService(options: CreateAgentRuntimeOptions) {
           env: options.env,
           ...(resolvedModel ? { model: resolvedModel } : {}),
           ...(persistImage ? { persistImage } : {}),
-          // execute 工具由 LocalShellBackend 自动提供，无需手动传递
+          // The execute tool is provided automatically by LocalShellBackend.
           ...(submitImageJob ? { submitImageJob } : {}),
           ...(submitVideoJob ? { submitVideoJob } : {}),
           ...(persistence ? { store: persistence.store } : {}),

@@ -15,11 +15,13 @@ const DEFAULT_SKILLS_ROOT = "/opt/loomic/skills";
 /**
  * Create a production backend with per-project LocalShellBackend sandbox.
  *
- * LocalShellBackend 作为 default backend，deepagents 自动暴露内置 `execute` 工具。
- * 每个 canvasId 对应一个独立的工作目录，用完由 runtime.ts 清理。
+ * LocalShellBackend is the default backend, so deepagents automatically exposes
+ * the built-in `execute` tool.
+ * Each canvasId gets an isolated working directory, which runtime.ts cleans up
+ * after use.
  *
- * 文件持久化（/workspace/、/memories/）走 StoreBackend (PostgresStore)，
- * 与 LocalShellBackend 完全独立互不影响。
+ * File persistence for /workspace/ and /memories/ goes through StoreBackend
+ * (PostgresStore), fully independent from LocalShellBackend.
  *
  * Routes:
  *   /workspace/        → StoreBackend (PostgresStore, per-project)
@@ -46,10 +48,11 @@ export function createProductionBackendFactory(
   const realSandboxDir = realpathSync(sandboxDir);
 
   // LocalShellBackend = FilesystemBackend + execute tool
-  // env 只传必要变量，不传 API key 等敏感信息
-  // virtualMode: true 限制文件工具（write_file/read_file/ls 等）只能操作 rootDir 内的文件。
-  // 防止多用户并发时通过 write_file 写绝对路径导致冲突。
-  // 注意：virtualMode 不限制 execute 工具（shell 命令仍可访问全文件系统）。
+  // Pass only required env vars, never API keys or other sensitive values.
+  // virtualMode: true limits file tools (write_file/read_file/ls, etc.) to rootDir.
+  // This prevents absolute-path writes from colliding across concurrent users.
+  // Note: virtualMode does not restrict the execute tool; shell commands can still
+  // access the full filesystem.
   const sandbox = new LocalShellBackend({
     rootDir: sandboxDir,
     virtualMode: true,

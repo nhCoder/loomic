@@ -124,7 +124,7 @@ export function useCreateProject() {
           routerRef.current.replace("/login");
           return;
         }
-        toastError("项目创建失败");
+        toastError("Failed to create project");
         setCreating(false);
       }
     },

@@ -26,13 +26,13 @@ export function PricingNav() {
             href="/login"
             className={buttonVariants({ variant: "ghost", size: "sm" })}
           >
-            登录
+            Log in
           </Link>
           <Link
             href="/register"
             className={buttonVariants({ size: "sm" })}
           >
-            免费开始
+            Start free
           </Link>
         </div>
       </nav>

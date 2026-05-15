@@ -22,23 +22,23 @@ const STEPS: Step[] = [
   {
     number: "01",
     icon: MessageSquare,
-    title: "描述你的想法",
+    title: "Describe your idea",
     description:
-      "用自然语言描述你想要的设计，或上传参考图片。AI 会理解你的真实意图。",
+      "Describe the design you want in natural language, or upload reference images. AI will understand your real intent.",
   },
   {
     number: "02",
     icon: Sparkles,
-    title: "AI 智能创作",
+    title: "AI-powered creation",
     description:
-      "Loomic 分析你的需求，生成多个专业设计方案。从配色到排版，每个细节都经过精心考量。",
+      "Loomic analyzes your needs and generates multiple professional design directions. From color to typography, every detail is considered.",
   },
   {
     number: "03",
     icon: Paintbrush,
-    title: "精细调整",
+    title: "Fine-tune",
     description:
-      "在画布上自由编辑任何元素。满意后一键导出，支持多种格式。",
+      "Freely edit any element on the canvas. Export in one click when you are satisfied, with multiple formats supported.",
   },
 ];
 
@@ -133,8 +133,8 @@ export function HowItWorks() {
         {/* Section header */}
         <div className="mb-16 md:mb-20">
           <SectionHeader
-            title="三步开始创作"
-            subtitle="从想法到作品，简单到超乎想象"
+            title="Start creating in three steps"
+            subtitle="From idea to finished work, simpler than you expect"
           />
         </div>
 

@@ -9,8 +9,8 @@ interface PricingToggleProps {
 }
 
 const options: { key: BillingPeriod; label: string }[] = [
-  { key: "monthly", label: "月付" },
-  { key: "yearly", label: "年付" },
+  { key: "monthly", label: "Monthly" },
+  { key: "yearly", label: "Yearly" },
 ];
 
 export function PricingToggle({ value, onChange }: PricingToggleProps) {
@@ -39,7 +39,7 @@ export function PricingToggle({ value, onChange }: PricingToggleProps) {
           </span>
           {key === "yearly" && (
             <span className="bg-accent text-accent-foreground relative z-10 rounded-full px-1.5 py-0.5 text-[10px] font-semibold leading-none">
-              省 25%
+              Save 25%
             </span>
           )}
         </button>

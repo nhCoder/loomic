@@ -20,46 +20,46 @@ interface GalleryItem {
 
 const GALLERY_ITEMS: GalleryItem[] = [
   {
-    category: "数字艺术",
-    title: "梦幻水母 -- AI 数字雕塑",
+    category: "Digital art",
+    title: "Dreamlike Jellyfish -- AI digital sculpture",
     image: "/images/showcase/showcase-1.jpg",
     rowSpan: "row-span-2",
   },
   {
-    category: "潮流时尚",
-    title: "朋克牛仔 -- AI 时尚造型",
+    category: "Street fashion",
+    title: "Punk Cowboy -- AI fashion styling",
     image: "/images/showcase/showcase-10.jpg",
     colSpan: "col-span-2",
   },
   {
-    category: "艺术摄影",
-    title: "暗调飘逸 -- AI 风格化写真",
+    category: "Art photography",
+    title: "Dark Flow -- AI stylized portrait",
     image: "/images/showcase/showcase-2.jpg",
   },
   {
-    category: "创意拼贴",
-    title: "东方美学 -- AI 混合媒体创作",
+    category: "Creative collage",
+    title: "Eastern Aesthetics -- AI mixed-media creation",
     image: "/images/showcase/showcase-3.jpg",
   },
   {
-    category: "静物写真",
-    title: "复古珠宝盒 -- AI 精致静物",
+    category: "Still life photography",
+    title: "Vintage Jewelry Box -- AI refined still life",
     image: "/images/showcase/showcase-4.jpg",
   },
   {
-    category: "时尚大片",
-    title: "复古运动风 -- AI 编辑摄影",
+    category: "Fashion editorial",
+    title: "Retro Sport -- AI editorial photography",
     image: "/images/showcase/showcase-5.jpg",
     colSpan: "col-span-2",
   },
   {
-    category: "人像摄影",
-    title: "清新双人 -- AI 自然光写真",
+    category: "Portrait photography",
+    title: "Fresh Duo -- AI natural-light portrait",
     image: "/images/showcase/showcase-11.jpg",
   },
   {
-    category: "光影摄影",
-    title: "闪光灯下 -- AI 戏剧性光影",
+    category: "Light and shadow photography",
+    title: "Under Flash -- AI dramatic lighting",
     image: "/images/showcase/showcase-12.jpg",
     rowSpan: "row-span-2",
   },
@@ -119,8 +119,8 @@ export function ShowcaseGallery() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-14 md:mb-20">
           <SectionHeader
-            title="创意无界"
-            subtitle="探索 AI 驱动的无限设计可能"
+            title="Creativity without limits"
+            subtitle="Explore unlimited AI-powered design possibilities"
           />
         </div>
 

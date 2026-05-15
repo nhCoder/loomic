@@ -5,7 +5,7 @@ import { aspectRatioToDimensions, GenerationError } from "../utils.js";
 
 export class OpenAIImageProvider implements ImageProvider {
   readonly name = "openai";
-  // TODO: 补充 models 列表后前端 image-models API 才会展示 OpenAI 模型供用户选择
+  // TODO: Add the models list so the frontend image-models API can expose OpenAI models.
   readonly models = [] as const;
   private client: OpenAI;
 

@@ -47,9 +47,9 @@ function LoomicLogo({ className }: { className?: string }) {
 // ---------------------------------------------------------------------------
 
 const NAV_LINKS = [
-  { label: "功能", href: "#features" },
-  { label: "案例", href: "#showcase" },
-  { label: "定价", href: "#pricing" },
+  { label: "Features", href: "#features" },
+  { label: "Showcase", href: "#showcase" },
+  { label: "Pricing", href: "#pricing" },
 ] as const;
 
 function handleAnchorClick(
@@ -112,7 +112,7 @@ function NavCTA() {
         glowActive && "landing-nav-cta-glow",
       )}
     >
-      开始创作
+      Start creating
     </Link>
   );
 }
@@ -224,7 +224,7 @@ export function FloatingNav() {
                   onClick={() => setMobileOpen(false)}
                   className="flex items-center justify-center h-9 w-full rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/80 transition-colors"
                 >
-                  开始创作
+                  Start creating
                 </Link>
               </div>
             </nav>

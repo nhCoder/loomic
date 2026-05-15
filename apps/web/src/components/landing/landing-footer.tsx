@@ -36,31 +36,31 @@ interface FooterColumn {
 
 const FOOTER_COLUMNS: FooterColumn[] = [
   {
-    title: "产品",
+    title: "Product",
     links: [
-      { label: "功能介绍", href: "#features" },
-      { label: "定价方案", href: "#pricing" },
-      { label: "更新日志", href: "/changelog" },
-      { label: "产品路线图", href: "/roadmap" },
+      { label: "Features", href: "#features" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "Changelog", href: "/changelog" },
+      { label: "Roadmap", href: "/roadmap" },
     ],
   },
   {
-    title: "资源",
+    title: "Resources",
     links: [
-      { label: "帮助文档", href: "/docs" },
-      { label: "设计博客", href: "/blog" },
-      { label: "社区论坛", href: "/community" },
-      { label: "模板市场", href: "/templates" },
+      { label: "Docs", href: "/docs" },
+      { label: "Design blog", href: "/blog" },
+      { label: "Community forum", href: "/community" },
+      { label: "Template marketplace", href: "/templates" },
     ],
   },
   {
-    title: "关于",
+    title: "Company",
     links: [
-      { label: "关于我们", href: "/about" },
-      { label: "加入团队", href: "/careers" },
-      { label: "联系我们", href: "/contact" },
-      { label: "服务条款", href: "/terms" },
-      { label: "隐私政策", href: "/privacy" },
+      { label: "About us", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "Contact us", href: "/contact" },
+      { label: "Terms of service", href: "/terms" },
+      { label: "Privacy policy", href: "/privacy" },
     ],
   },
 ];
@@ -129,7 +129,7 @@ export function LandingFooter() {
             </Link>
 
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-              AI 驱动的创意设计平台
+              AI-powered creative design platform
             </p>
 
             {/* Social links */}
@@ -191,7 +191,7 @@ export function LandingFooter() {
           <p className="text-sm text-muted-foreground">
             &copy; {currentYear} Loomic. All rights reserved.
           </p>
-          <span className="text-sm text-muted-foreground">简体中文</span>
+          <span className="text-sm text-muted-foreground">English</span>
         </div>
       </div>
     </footer>
