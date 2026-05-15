@@ -30,7 +30,7 @@ Use the direct Postgres connection string as `SUPABASE_DB_URL`; the worker uses 
 
 Use `.env.dokploy.example` as the template.
 
-For production, set both of these to your public HTTPS domain:
+For production, set both of these to the same public HTTPS domain you added in Dokploy:
 
 ```env
 NEXT_PUBLIC_SERVER_BASE_URL=https://loomic.example.com
@@ -38,6 +38,8 @@ LOOMIC_WEB_ORIGIN=https://loomic.example.com
 ```
 
 `NEXT_PUBLIC_SERVER_BASE_URL` is embedded when the web image is built, so rebuild the app after changing it.
+
+You do not need to expose the `api` or `worker` services in Dokploy. The browser talks to the same public domain, and nginx in the `web` container forwards `/api/*` and `/api/ws` to the internal `api:3001` service.
 
 At minimum, configure:
 
@@ -73,6 +75,7 @@ Expected response:
 
 ```bash
 cp .env.dokploy.example .env
+sed -i.bak 's#https://loomic.example.com#http://localhost:3000#g' .env
 docker compose up --build
 ```
 

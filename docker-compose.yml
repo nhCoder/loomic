@@ -10,8 +10,8 @@ services:
     depends_on:
       api:
         condition: service_healthy
-    ports:
-      - "${WEB_PORT:-3000}:80"
+    expose:
+      - "80"
     restart: unless-stopped
 
   api:
